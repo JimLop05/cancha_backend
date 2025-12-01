@@ -2,7 +2,15 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-require('dotenv').config();
+
+// 🔴 SOLO cargar dotenv en desarrollo, NO en producción
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+  console.log('🔧 Modo desarrollo: dotenv cargado');
+} else {
+  console.log('🚀 Modo producción: usando variables de entorno del sistema');
+}
+
 require('./services/expirationService');
 
 const getIDRoutes = require('./api/getID');
