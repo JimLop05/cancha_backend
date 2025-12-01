@@ -5,7 +5,9 @@ const nodemailer = require('nodemailer');
 const path = require('path');
 const fs = require('fs').promises;
 const { unlinkFile, createUploadAndProcess } = require('../../middleware/multer');
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 const router = express.Router();
 
