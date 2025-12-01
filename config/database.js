@@ -7,6 +7,9 @@ const pool = new Pool({
   database: 'cancha_007',
   password: process.env.DB_PASSWORD || 'Queonda123',
   port: process.env.DB_PORT || 5432,
+  //Agregado
+    connectionString: process.env.DATABASE_URL || 'postgresql://postgrase:Queonda123@localhost:5432/cancha_007',
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
 });
 
 // ✅ Hacer una conexión inicial de prueba
